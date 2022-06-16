@@ -29,6 +29,15 @@ use Neomerx\Cors\Contracts\Factory\FactoryInterface;
 use Neomerx\Cors\Log\LoggerAwareTrait;
 use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerInterface;
+use function array_diff;
+use function explode;
+use function parse_url;
+use function reset;
+use function strcasecmp;
+use function strtolower;
+use function trim;
+use const PHP_URL_HOST;
+use const PHP_URL_PORT;
 
 /**
  * @package Neomerx\Cors
