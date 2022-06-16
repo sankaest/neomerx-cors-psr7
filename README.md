@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sankaest/neomerx-cors-psr7.svg?branch=master)](https://travis-ci.org/sankaest/neomerx-cors-psr7)
+[![Build Status](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/badges/build.png?b=master)](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/badges/build.png?b=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/?branch=master)
 [![License](https://img.shields.io/packagist/l/sankaest/neomerx-cors-psr7.svg)](https://packagist.org/packages/sankaest/neomerx-cors-psr7)
