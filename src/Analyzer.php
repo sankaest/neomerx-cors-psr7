@@ -97,7 +97,7 @@ class Analyzer implements AnalyzerInterface
     /**
      * @inheritdoc
      */
-    public function setLogger(LoggerInterface $logger)
+    public function setLogger(LoggerInterface $logger): void
     {
         $this->psrSetLogger($logger);
         $this->strategy->setLogger($logger);
@@ -214,7 +214,7 @@ class Analyzer implements AnalyzerInterface
 
             return $this->createResult(AnalysisResultInterface::TYPE_REQUEST_OUT_OF_CORS_SCOPE);
         }
-        $requestMethod = \reset($requestMethod);
+        $requestMethod = reset($requestMethod);
 
         // OK now we are sure it's a pre-flight request
         $this->logDebug('Request is identified as a pre-flight CORS request.');
@@ -281,7 +281,7 @@ class Analyzer implements AnalyzerInterface
 
         // #6.2.10
         // Has only 'simple' headers excluding Content-Type
-        $isSimpleExclCT = empty(\array_diff($lcRequestHeaders, static::SIMPLE_LC_HEADERS_EXCLUDING_CONTENT_TYPE));
+        $isSimpleExclCT = empty(array_diff($lcRequestHeaders, static::SIMPLE_LC_HEADERS_EXCLUDING_CONTENT_TYPE));
         if ($isSimpleExclCT === false || $this->strategy->isForceAddAllowedHeadersToPreFlightResponse() === true) {
             $headers[CorsResponseHeaders::ALLOW_HEADERS] = $this->strategy->getRequestAllowedHeaders($request);
         }
@@ -299,10 +299,10 @@ class Analyzer implements AnalyzerInterface
         $requestHeaders = [];
 
         foreach ($request->getHeader(CorsRequestHeaders::HEADERS) as $headersList) {
-            $headersList = \strtolower($headersList);
-            foreach (\explode(CorsRequestHeaders::HEADERS_SEPARATOR, $headersList) as $header) {
+            $headersList = strtolower($headersList);
+            foreach (explode(CorsRequestHeaders::HEADERS_SEPARATOR, $headersList) as $header) {
                 // after explode header names might have spaces in the beginnings and ends so trim them
-                $header = \trim($header);
+                $header = trim($header);
                 if (empty($header) === false) {
                     $requestHeaders[] = $header;
                 }
@@ -322,7 +322,7 @@ class Analyzer implements AnalyzerInterface
         if ($request->hasHeader(CorsRequestHeaders::ORIGIN) === true) {
             $header = $request->getHeader(CorsRequestHeaders::ORIGIN);
             if (empty($header) === false) {
-                return \reset($header);
+                return reset($header);
             }
         }
 
@@ -349,15 +349,15 @@ class Analyzer implements AnalyzerInterface
         //
         // `parse_url` function thinks the first value is `path` and the second is `host` with `port`
         // which is a bit annoying so...
-        $portOrNull = \parse_url($host, PHP_URL_PORT);
-        $hostUrl    = $portOrNull === null ? $host : \parse_url($host, PHP_URL_HOST);
+        $portOrNull = parse_url($host, PHP_URL_PORT);
+        $hostUrl    = $portOrNull === null ? $host : parse_url($host, PHP_URL_HOST);
 
         // Neither MDN, nor RFC tell anything definitive about Host header comparison.
         // Browsers such as Firefox and Chrome do not add the optional port for
         // HTTP (80) and HTTPS (443).
         // So we require port match only if it specified in settings.
 
-        $isHostUrlMatch = \strcasecmp($serverOriginHost, $hostUrl) === 0;
+        $isHostUrlMatch = strcasecmp($serverOriginHost, $hostUrl) === 0;
         $isSameHost     =
             $isHostUrlMatch === true &&
             ($serverOriginPort === null || $serverOriginPort === $portOrNull);
@@ -382,7 +382,7 @@ class Analyzer implements AnalyzerInterface
      */
     protected function checkIsCrossOrigin(string $requestOrigin): bool
     {
-        $parsedUrl = \parse_url($requestOrigin);
+        $parsedUrl = parse_url($requestOrigin);
         if ($parsedUrl === false) {
             $this->logWarning('Request origin header URL cannot be parsed.', ['url' => $requestOrigin]);
 
@@ -392,7 +392,7 @@ class Analyzer implements AnalyzerInterface
         // check `host` parts
         $requestOriginHost = $parsedUrl['host'] ?? '';
         $serverOriginHost  = $this->strategy->getServerOriginHost();
-        if (\strcasecmp($requestOriginHost, $serverOriginHost) !== 0) {
+        if (strcasecmp($requestOriginHost, $serverOriginHost) !== 0) {
             return true;
         }
 
@@ -406,7 +406,7 @@ class Analyzer implements AnalyzerInterface
         // check `scheme` parts
         $requestOriginScheme = $parsedUrl['scheme'] ?? '';
         $serverOriginScheme  = $this->strategy->getServerOriginScheme();
-        if (\strcasecmp($requestOriginScheme, $serverOriginScheme) !== 0) {
+        if (strcasecmp($requestOriginScheme, $serverOriginScheme) !== 0) {
             return true;
         }
 
@@ -450,7 +450,7 @@ class Analyzer implements AnalyzerInterface
     private function getRequestHostHeader(RequestInterface $request): ?string
     {
         $hostHeaderValue = $request->getHeader(CorsRequestHeaders::HOST);
-        $host            = empty($hostHeaderValue) === true ? null : \reset($hostHeaderValue);
+        $host            = empty($hostHeaderValue) === true ? null : reset($hostHeaderValue);
 
         return $host;
     }

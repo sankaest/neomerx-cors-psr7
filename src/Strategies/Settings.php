@@ -271,9 +271,9 @@ class Settings implements AnalysisStrategyInterface
         $this->serverOriginScheme = $scheme;
         $this->serverOriginHost   = $host;
 
-        if (\strcasecmp($scheme, 'http') === 0 && $port === 80) {
+        if (strcasecmp($scheme, 'http') === 0 && $port === 80) {
             $port = null;
-        } elseif (\strcasecmp($scheme, 'https') === 0 && $port === 443) {
+        } elseif (strcasecmp($scheme, 'https') === 0 && $port === 443) {
             $port = null;
         }
         $this->serverOriginPort = $port;
@@ -429,7 +429,7 @@ class Settings implements AnalysisStrategyInterface
     {
         return
             $this->areAllOriginsAllowed === true ||
-            isset($this->allowedOrigins[\strtolower($requestOrigin)]) === true;
+            isset($this->allowedOrigins[strtolower($requestOrigin)]) === true;
     }
 
     /**
@@ -456,7 +456,7 @@ class Settings implements AnalysisStrategyInterface
         $this->allowedOrigins = [];
 
         foreach ($origins as $origin) {
-            $this->allowedOrigins[\strtolower($origin)] = true;
+            $this->allowedOrigins[strtolower($origin)] = true;
         }
 
         $this->areAllOriginsAllowed = false;
@@ -469,7 +469,7 @@ class Settings implements AnalysisStrategyInterface
      */
     public function isRequestMethodSupported(string $method): bool
     {
-        return $this->areAllMethodsAllowed === true || isset($this->allowedLcMethods[\strtolower($method)]) === true;
+        return $this->areAllMethodsAllowed === true || isset($this->allowedLcMethods[strtolower($method)]) === true;
     }
 
     /**
@@ -501,11 +501,11 @@ class Settings implements AnalysisStrategyInterface
      */
     public function setAllowedMethods(array $methods): self
     {
-        $this->allowedMethodsList = \implode(', ', $methods);
+        $this->allowedMethodsList = implode(', ', $methods);
 
         $this->allowedLcMethods = [];
         foreach ($methods as $method) {
-            $this->allowedLcMethods[\strtolower($method)] = true;
+            $this->allowedLcMethods[strtolower($method)] = true;
         }
 
         $this->areAllMethodsAllowed = false;
@@ -519,7 +519,7 @@ class Settings implements AnalysisStrategyInterface
     public function isRequestAllHeadersSupported(array $lcHeaders): bool
     {
         return $this->areAllHeadersAllowed === true ||
-            \count(\array_intersect($this->allowedLcHeaders, $lcHeaders)) === \count($lcHeaders);
+            \count(array_intersect($this->allowedLcHeaders, $lcHeaders)) === \count($lcHeaders);
     }
 
     /**
@@ -551,11 +551,11 @@ class Settings implements AnalysisStrategyInterface
      */
     public function setAllowedHeaders(array $headers): self
     {
-        $this->allowedHeadersList = \implode(', ', $headers);
+        $this->allowedHeadersList = implode(', ', $headers);
 
         $this->allowedLcHeaders = [];
         foreach ($headers as $header) {
-            $this->allowedLcHeaders[] = \strtolower($header);
+            $this->allowedLcHeaders[] = strtolower($header);
         }
 
         $this->areAllHeadersAllowed = false;
@@ -600,12 +600,12 @@ class Settings implements AnalysisStrategyInterface
         // make sense to include those headers to exposed.
         $filtered = [];
         foreach ($headers as $header) {
-            if (\in_array(\strtolower($header), static::SIMPLE_LC_RESPONSE_HEADERS) === false) {
+            if (\in_array(strtolower($header), static::SIMPLE_LC_RESPONSE_HEADERS) === false) {
                 $filtered[] = $header;
             }
         }
 
-        $this->exposedHeadersList = \implode(', ', $filtered);
+        $this->exposedHeadersList = implode(', ', $filtered);
 
         return $this;
     }
