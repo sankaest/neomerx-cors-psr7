@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/neomerx/cors-psr7.svg?branch=master)](https://travis-ci.org/neomerx/cors-psr7)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/neomerx/cors-psr7/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/neomerx/cors-psr7/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/neomerx/cors-psr7/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/neomerx/cors-psr7/?branch=master)
-[![License](https://img.shields.io/packagist/l/neomerx/cors-psr7.svg)](https://packagist.org/packages/neomerx/cors-psr7)
+[![Build Status](https://travis-ci.org/sankaest/neomerx-cors-psr7.svg?branch=master)](https://travis-ci.org/sankaest/neomerx-cors-psr7)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/sankaest/neomerx-cors-psr7/?branch=master)
+[![License](https://img.shields.io/packagist/l/sankaest/neomerx-cors-psr7.svg)](https://packagist.org/packages/sankaest/neomerx-cors-psr7)
 
 ## Description
 
@@ -110,7 +110,7 @@ $cors     = Analyzer::instance($settings)->analyze($request);
 ## Install
 
 ```
-composer require neomerx/cors-psr7
+composer require sankaest/neomerx-cors-psr7
 ```
 
 ## Debug Mode
@@ -159,11 +159,11 @@ composer test
 
 ## Questions?
 
-Do not hesitate to check [issues](https://github.com/neomerx/cors-psr7/issues) or post a new one.
+Do not hesitate to check [issues](https://github.com/sankaest/neomerx-cors-psr7/issues) or post a new one.
 
 ## Contributing
 
-If you have spotted any compliance issues with the [CORS Recommendation](http://www.w3.org/TR/cors/) please post an [issue](https://github.com/neomerx/cors-psr7/issues). Pull requests for documentation and code improvements (PSR-2, tests) are welcome.
+If you have spotted any compliance issues with the [CORS Recommendation](http://www.w3.org/TR/cors/) please post an [issue](https://github.com/sankaest/neomerx-cors-psr7/issues). Pull requests for documentation and code improvements (PSR-2, tests) are welcome.
 
 ## Versioning
 
