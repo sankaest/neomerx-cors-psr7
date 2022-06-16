@@ -15,7 +15,7 @@
   "support": {
     "issues": "https://github.com/sankaest/neomerx-cors-psr7/issues"
   },
-  "license": "BSD-3-Clause",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "sankaest"
